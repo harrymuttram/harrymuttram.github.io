@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry G. Muttram — Political Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: 'Crimson Pro', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --ink: #1a1a1a;
+    --paper: #fafaf8;
+    --muted: #6b6b6b;
+    --accent: #8b2500;
+    --rule: #d4d0ca;
+    --section-gap: 3.5rem;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 17px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background: rgba(250, 250, 248, 0.92);
+  }
+
+  nav .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  nav .links { display: flex; gap: 1.75rem; }
+
+  nav .links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  nav .links a:hover { color: var(--accent); }
+
+  /* --- HERO --- */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 strong {
+    font-weight: 700;
+  }
+
+  .hero .tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .hero .meta {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .hero .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .hero .meta a:hover { border-color: var(--accent); }
+
+  /* --- MAIN CONTENT --- */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  section {
+    padding-top: var(--section-gap);
+  }
+
+  section + section {
+    margin-top: 1rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--ink);
+    display: inline-block;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .subsection {
+    margin-bottom: 1.75rem;
+  }
+
+  .item {
+    margin-bottom: 1.1rem;
+    padding-left: 0;
+  }
+
+  .item .venue {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .item .status {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15em 0.55em;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+  }
+
+  .status.published {
+    background: #e8f0e4;
+    color: #3a6b2a;
+  }
+
+  .status.rr {
+    background: #fef3e0;
+    color: #8b6914;
+  }
+
+  .status.review {
+    background: #e8ecf4;
+    color: #3a4f7a;
+  }
+
+  .item p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .item .authors {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .item .authors .me {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* --- TEACHING GRID --- */
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .teach-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1rem 1.15rem;
+  }
+
+  .teach-card .institution {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .teach-card .role {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .teach-card .courses {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* --- AWARDS --- */
+  .awards-list {
+    list-style: none;
+  }
+
+  .awards-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .awards-list li:last-child { border-bottom: none; }
+
+  .award-marker {
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* --- WORKING PAPERS --- */
+  .wp-item {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--rule);
+  }
+
+  .wp-item:hover { border-left-color: var(--accent); transition: border-color 0.2s; }
+
+  .wp-item .title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .wp-item .coauthors {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 2rem 3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 640px) {
+    html { font-size: 16px; }
+    .hero h1 { font-size: 2.2rem; }
+    .teaching-grid { grid-template-columns: 1fr; }
+    nav .links { gap: 1rem; }
+    nav .links a { font-size: 0.72rem; }
+    .hero { padding: 3.5rem 1.25rem 2rem; }
+    main { padding: 0 1.25rem 3rem; }
+  }
+
+  /* --- ANIMATION STAGGER --- */
+  section { animation: fadeUp 0.5s ease both; }
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.15s; }
+  section:nth-child(3) { animation-delay: 0.2s; }
+  section:nth-child(4) { animation-delay: 0.25s; }
+  section:nth-child(5) { animation-delay: 0.3s; }
+  section:nth-child(6) { animation-delay: 0.35s; }
+
+  /* print styles */
+  @media print {
+    nav { display: none; }
+    .hero { padding-top: 1rem; }
+    section { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="name">Harry G. Muttram</a>
+  <div class="links">
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#awards">Awards</a>
+    <a href="#cv">CV</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1><strong>Harry G. Muttram</strong></h1>
+  <p class="tagline">
+    Ph.D. Candidate in Political Science at UC Riverside. I study policing, bureaucratic behavior, and public policy using causal inference and computational methods.
+  </p>
+  <div class="meta">
+    <span>hmutt001@ucr.edu</span>
+    <span>University of California, Riverside</span>
+    <span>Expected Ph.D. May 2027</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- PUBLICATIONS -->
+  <section id="research">
+    <h2>Publications</h2>
+
+    <div class="item">
+      <p><strong>American Immigration Attitudes and NIMBYism: Do Immigration Preferences Vary by Spatial Scale?</strong>
+        <span class="status published">Published</span>
+      </p>
+      <p class="authors">Lee, Jieun, and <span class="me">Harry G. Muttram</span> (co-lead author). 2025. <span class="venue">PS: Political Science &amp; Politics</span> 1–9.</p>
+    </div>
+
+    <div class="item">
+      <p><strong>When Are Identities Politically Consequential? Identifying Conditions of Descriptive, Substantive, and Allied Group Identity.</strong>
+        <span class="status published">Published</span>
+      </p>
+      <p class="authors">Bishin, Benjamin G., and <span class="me">Harry G. Muttram</span>. 2024. <span class="venue">The Forum</span> 21: 339–357.</p>
+    </div>
+  </section>
+
+  <!-- UNDER REVIEW -->
+  <section>
+    <h2>Under Review</h2>
+
+    <div class="item">
+      <p><strong>Political Control and Policing: When Do Police Comply with Police Reform?</strong>
+        <span class="status rr">R&amp;R at AJPS</span>
+      </p>
+      <p class="authors"><span class="me">Muttram, Harry G.</span> (lead author), José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller.</p>
+    </div>
+
+    <div class="item">
+      <p><strong>Police as Policymakers: How Experiences With Policy Implementation Shape Policy Representation.</strong>
+        <span class="status review">Under Review</span>
+      </p>
+      <p class="authors">Sierra-Arévalo, Michael, José J. Alcocer, Lauren Brown, Raquel Delerme, Benjamin A.T. Graham, <span class="me">Harry G. Muttram</span>, Jackson Trager, and Nicholas Weller. <span class="venue">Perspectives on Politics.</span></p>
+    </div>
+
+    <div class="item">
+      <p><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong>
+        <span class="status review">Under Review</span>
+      </p>
+      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Submitted to ACL.</span></p>
+    </div>
+
+    <div class="item">
+      <p><strong>Community-Informed AI Models for Police Accountability.</strong>
+        <span class="status review">Under Review</span>
+      </p>
+      <p class="authors">Everyday Respect Team. <span class="venue">Nature Humanities and Social Sciences Communications.</span></p>
+    </div>
+  </section>
+
+  <!-- WORKING PAPERS -->
+  <section>
+    <h2>Working Papers</h2>
+
+    <div class="wp-item">
+      <div class="title">Unmeasured Peer Networks Confound Estimates of Diversification in Policing: Evidence from the LAPD</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">The Distribution of Minor Indignities: Using Body-Worn Video Annotations to Understand Disparities in Police-Civilian Interactions</div>
+      <div class="coauthors">with José J. Alcocer, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">Auditing Administrative Data: Do Police Systematically Misreport Traffic Stop Data?</div>
+      <div class="coauthors">with José J. Alcocer, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+
+    <div class="teaching-grid">
+      <div class="teach-card">
+        <div class="institution">UC Riverside</div>
+        <div class="role">Teaching Assistant</div>
+        <div class="courses">Criminal Justice, Judicial Politics, American Politics, American Institutions through Film, Congressional Elections, Graduate Quantitative Methods Sequence</div>
+      </div>
+
+      <div class="teach-card">
+        <div class="institution">ICPSR Summer Program — U. Michigan</div>
+        <div class="role">Teaching Assistant, Summer 2025</div>
+        <div class="courses">Evaluating Model Robustness (Regression III), Rational Choice Theories of Politics and Society</div>
+      </div>
+
+      <div class="teach-card">
+        <div class="institution">UC Graduate Division</div>
+        <div class="role">Quantitative Methods Consultant</div>
+        <div class="courses">One-on-one consultations on research design, causal inference, and R. Workshops on regression, GLMs, multilevel models, causal inference, and LaTeX.</div>
+      </div>
+
+      <div class="teach-card">
+        <div class="institution">Prison Education Project</div>
+        <div class="role">Educator, 2021–2022</div>
+        <div class="courses">Co-taught Introduction to Philosophy and Introduction to Sociology to incarcerated youth at Riverside and Indio Juvenile Halls.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <h2>Awards &amp; Grants</h2>
+    <ul class="awards-list">
+      <li><span class="award-marker">◆</span> UC Graduate Division Outstanding Teaching Assistant Award, 2024–2025</li>
+      <li><span class="award-marker">◆</span> EITM Institute Scholarship, 2024</li>
+      <li><span class="award-marker">◆</span> UC Riverside Chancellor's Distinguished Fellowship</li>
+      <li><span class="award-marker">◆</span> UC Riverside Methods Certificate, Department of Political Science</li>
+    </ul>
+  </section>
+
+  <!-- CV LINK -->
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+    <p style="font-size: 0.95rem; color: var(--muted);">
+      Full CV available as a <a href="#" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">PDF download</a>. <!-- Replace # with your actual CV PDF link -->
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <span>Harry G. Muttram · UC Riverside · Political Science</span>
+  <span>hmutt001@ucr.edu</span>
+</footer>
+
+</body>
+</html>
