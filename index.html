@@ -397,7 +397,7 @@
       I am a fourth-year Ph.D. candidate in Political Science at UC Riverside specializing in policing, police reform, and public policy. My research applies observational causal inference, experimental designs, computational methods, and qualitative interviews to understand how police behave and when reform works. I am also a researcher with the <a href="https://dornsife.usc.edu/everydayrespect/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Everyday Respect</a> project at USC.
     </p>
     <div class="meta">
-      <span><a href="/cdn-cgi/l/email-protection#20484d555454101011605543520e454455" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"><span class="__cf_email__" data-cfemail="85ede8f0f1f1b5b5b4c5f0e6f7abe0e1f0">[email&#160;protected]</span></a></span>
+      <span id="hero-email"></span>
       <span>University of California, Riverside</span>
       <span>Expected Ph.D. May 2027</span>
     </div>
@@ -529,4 +529,32 @@
 
 <footer>
   <span>Harry G. Muttram · UC Riverside · Political Science</span>
-  <span><a href="/cdn-cgi/l/email-protection#e78f8a929393d
+  <span id="footer-email"></span>
+</footer>
+
+<script>
+(function() {
+  var u = 'hmutt001';
+  var d = 'ucr.edu';
+  var addr = u + '@' + d;
+  var heroEl = document.getElementById('hero-email');
+  var footerEl = document.getElementById('footer-email');
+  if (heroEl) {
+    var a1 = document.createElement('a');
+    a1.href = 'mailto:' + addr;
+    a1.textContent = addr;
+    a1.style.cssText = 'color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;';
+    heroEl.appendChild(a1);
+  }
+  if (footerEl) {
+    var a2 = document.createElement('a');
+    a2.href = 'mailto:' + addr;
+    a2.textContent = addr;
+    a2.style.cssText = 'color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule);';
+    footerEl.appendChild(a2);
+  }
+})();
+</script>
+
+</body>
+</html>
