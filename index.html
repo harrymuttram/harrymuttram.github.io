@@ -699,8 +699,8 @@
   ];
 
   var bg = document.getElementById('formula-bg');
-  var count = 18;
-  var cols = 3;
+  var count = 30;
+  var cols = 4;
   var rows = Math.ceil(count / cols);
   var cellW = 100 / cols;
   var cellH = 100 / rows;
@@ -709,9 +709,9 @@
     span.textContent = formulas[i % formulas.length];
     var col = i % cols;
     var row = Math.floor(i / cols);
-    span.style.left = (col * cellW + Math.random() * cellW * 0.5 + cellW * 0.1) + '%';
-    span.style.top = (row * cellH + Math.random() * cellH * 0.4 + cellH * 0.2) + '%';
-    span.style.fontSize = (0.85 + Math.random() * 0.8) + 'rem';
+    span.style.left = (col * cellW + Math.random() * cellW * 0.4 + cellW * 0.1) + '%';
+    span.style.top = (row * cellH + Math.random() * cellH * 0.35 + cellH * 0.15) + '%';
+    span.style.fontSize = (1.2 + Math.random() * 1.3) + 'rem';
     span.style.transform = 'rotate(' + (Math.random() * 16 - 8) + 'deg)';
     bg.appendChild(span);
   }
