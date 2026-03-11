@@ -365,6 +365,117 @@
   section:nth-child(5) { animation-delay: 0.3s; }
   section:nth-child(6) { animation-delay: 0.35s; }
 
+  /* --- DARK MODE --- */
+  [data-theme="dark"] {
+    --ink: #e8e0d4;
+    --paper: #1a1714;
+    --warm-white: #242019;
+    --muted: #9e9485;
+    --accent: #d4784a;
+    --accent-light: #e8955f;
+    --rule: #3d362c;
+    --sand: #242019;
+  }
+
+  [data-theme="dark"] nav {
+    background: rgba(26, 23, 20, 0.92);
+    border-bottom-color: var(--rule);
+  }
+
+  [data-theme="dark"] .hero-banner {
+    background: linear-gradient(165deg, #1f1c17 0%, var(--paper) 50%, #252119 100%);
+    border-bottom-color: var(--rule);
+  }
+
+  [data-theme="dark"] .hero-banner::before {
+    background: radial-gradient(ellipse at 20% 80%, rgba(212, 120, 74, 0.06) 0%, transparent 60%);
+  }
+
+  [data-theme="dark"] .hero-photo {
+    border-color: #3d362c;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  [data-theme="dark"] .teach-card {
+    background: #242019;
+    border-color: var(--rule);
+  }
+
+  [data-theme="dark"] .status.published {
+    background: #2a3322;
+    color: #8db36e;
+  }
+
+  [data-theme="dark"] .status.rr {
+    background: #362d1a;
+    color: #d4a94a;
+  }
+
+  [data-theme="dark"] .status.review {
+    background: #2a2720;
+    color: #a69a86;
+  }
+
+  [data-theme="dark"] .item p a {
+    color: var(--ink) !important;
+    border-bottom-color: var(--rule) !important;
+  }
+
+  /* --- FORMULA BACKGROUND --- */
+  .formula-bg {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  [data-theme="dark"] .formula-bg {
+    display: block;
+    opacity: 1;
+  }
+
+  .formula-bg span {
+    position: absolute;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    color: rgba(212, 120, 74, 0.15);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  /* --- DARK MODE TOGGLE --- */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* Ensure content is above formula bg */
+  nav, .hero-banner, main, footer {
+    position: relative;
+    z-index: 1;
+  }
+
   /* print styles */
   @media print {
     nav { display: none; }
@@ -372,6 +483,8 @@
     .hero { padding-top: 1rem; }
     .hero-photo { box-shadow: none; }
     section { animation: none; }
+    .formula-bg { display: none !important; }
+    .theme-toggle { display: none; }
   }
 </style>
 </head>
@@ -383,8 +496,11 @@
     <a href="#research">Research</a>
     <a href="#teaching">Teaching</a>
     <a href="#awards">Awards</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
   </div>
 </nav>
+
+<div class="formula-bg" id="formula-bg"></div>
 
 <div class="hero-banner">
 <div class="hero">
@@ -534,6 +650,7 @@
 
 <script>
 (function() {
+  // Email obfuscation
   var u = 'hmutt001';
   var d = 'ucr.edu';
   var addr = u + '@' + d;
@@ -552,6 +669,51 @@
     a2.textContent = addr;
     a2.style.cssText = 'color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule);';
     footerEl.appendChild(a2);
+  }
+
+  // Dark mode toggle
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+
+  function setTheme(dark) {
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    toggle.textContent = dark ? '☾' : '☀';
+  }
+
+  toggle.addEventListener('click', function() {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    setTheme(!isDark);
+  });
+
+  // Generate formula background
+  var formulas = [
+    'δ̂ = (Ȳ₁₁ − Ȳ₁₀) − (Ȳ₀₁ − Ȳ₀₀)',
+    'β̂ = (X′X)⁻¹X′Y',
+    'β̂ = argmin Σᵢ(Yᵢ − Xᵢβ)²',
+    'τ̂ᴿᴰᴰ = E[Y|X=c⁺] − E[Y|X=c⁻]',
+    'Pr(Y=1) = logit⁻¹(Xβ)',
+    'ATE = E[Y(1)] − E[Y(0)]',
+    'ATT = E[Y(1) − Y(0) | D=1]',
+    'Yᵢ = α + τDᵢ + εᵢ',
+    'Y(0), Y(1) ⊥ D | X',
+  ];
+
+  var bg = document.getElementById('formula-bg');
+  var count = 18;
+  var cols = 3;
+  var rows = Math.ceil(count / cols);
+  var cellW = 100 / cols;
+  var cellH = 100 / rows;
+  for (var i = 0; i < count; i++) {
+    var span = document.createElement('span');
+    span.textContent = formulas[i % formulas.length];
+    var col = i % cols;
+    var row = Math.floor(i / cols);
+    span.style.left = (col * cellW + Math.random() * cellW * 0.5 + cellW * 0.1) + '%';
+    span.style.top = (row * cellH + Math.random() * cellH * 0.4 + cellH * 0.2) + '%';
+    span.style.fontSize = (0.85 + Math.random() * 0.8) + 'rem';
+    span.style.transform = 'rotate(' + (Math.random() * 16 - 8) + 'deg)';
+    bg.appendChild(span);
   }
 })();
 </script>
