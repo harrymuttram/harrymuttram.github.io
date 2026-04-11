@@ -228,11 +228,6 @@
     color: #5c5040;
   }
 
-  .status.accepted {
-    background: #d9e8d4;
-    color: #3a6630;
-  }
-
   .item p {
     font-size: 0.95rem;
     line-height: 1.55;
@@ -334,6 +329,106 @@
     margin-top: 0.15rem;
   }
 
+  /* --- TOOL CARD --- */
+  .tool-card {
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 2rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .tool-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 4px 20px rgba(155, 74, 28, 0.08);
+  }
+
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .tool-card .tool-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .tool-card .tool-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+
+  .tool-card .tool-subtitle {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 620px;
+    margin-bottom: 1.25rem;
+  }
+
+  .tool-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tool-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3em 0.75em;
+    border-radius: 20px;
+    background: var(--sand);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .tool-launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--warm-white);
+    background: var(--accent);
+    padding: 0.6em 1.4em;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .tool-launch:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  .tool-launch svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   /* --- FOOTER --- */
   footer {
     max-width: 820px;
@@ -369,122 +464,7 @@
   section:nth-child(4) { animation-delay: 0.25s; }
   section:nth-child(5) { animation-delay: 0.3s; }
   section:nth-child(6) { animation-delay: 0.35s; }
-
-  /* --- DARK MODE --- */
-  [data-theme="dark"] {
-    --ink: #e8e0d4;
-    --paper: #1a1714;
-    --warm-white: #242019;
-    --muted: #9e9485;
-    --accent: #d4784a;
-    --accent-light: #e8955f;
-    --rule: #3d362c;
-    --sand: #242019;
-  }
-
-  [data-theme="dark"] nav {
-    background: rgba(26, 23, 20, 0.92);
-    border-bottom-color: var(--rule);
-  }
-
-  [data-theme="dark"] .hero-banner {
-    background: linear-gradient(165deg, #1f1c17 0%, var(--paper) 50%, #252119 100%);
-    border-bottom-color: var(--rule);
-  }
-
-  [data-theme="dark"] .hero-banner::before {
-    background: radial-gradient(ellipse at 20% 80%, rgba(212, 120, 74, 0.06) 0%, transparent 60%);
-  }
-
-  [data-theme="dark"] .hero-photo {
-    border-color: #3d362c;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  [data-theme="dark"] .teach-card {
-    background: #242019;
-    border-color: var(--rule);
-  }
-
-  [data-theme="dark"] .status.published {
-    background: #2a3322;
-    color: #8db36e;
-  }
-
-  [data-theme="dark"] .status.rr {
-    background: #362d1a;
-    color: #d4a94a;
-  }
-
-  [data-theme="dark"] .status.review {
-    background: #2a2720;
-    color: #a69a86;
-  }
-
-  [data-theme="dark"] .status.accepted {
-    background: #253020;
-    color: #8db36e;
-  }
-
-  [data-theme="dark"] .item p a {
-    color: var(--ink) !important;
-    border-bottom-color: var(--rule) !important;
-  }
-
-  /* --- FORMULA BACKGROUND --- */
-  .formula-bg {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-
-  [data-theme="dark"] .formula-bg {
-    display: block;
-    opacity: 1;
-  }
-
-  .formula-bg span {
-    position: absolute;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
-    color: rgba(212, 120, 74, 0.15);
-    white-space: nowrap;
-    user-select: none;
-  }
-
-  /* --- DARK MODE TOGGLE --- */
-  .theme-toggle {
-    background: none;
-    border: 1px solid var(--rule);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: var(--muted);
-    transition: color 0.2s, border-color 0.2s;
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
-
-  .theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* Ensure content is above formula bg */
-  nav, .hero-banner, main, footer {
-    position: relative;
-    z-index: 1;
-  }
+  section:nth-child(7) { animation-delay: 0.4s; }
 
   /* print styles */
   @media print {
@@ -493,8 +473,6 @@
     .hero { padding-top: 1rem; }
     .hero-photo { box-shadow: none; }
     section { animation: none; }
-    .formula-bg { display: none !important; }
-    .theme-toggle { display: none; }
   }
 </style>
 </head>
@@ -504,13 +482,11 @@
   <a href="#" class="name">Harry G. Muttram</a>
   <div class="links">
     <a href="#research">Research</a>
+    <a href="#tools">Tools</a>
     <a href="#teaching">Teaching</a>
     <a href="#awards">Awards</a>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
   </div>
 </nav>
-
-<div class="formula-bg" id="formula-bg"></div>
 
 <div class="hero-banner">
 <div class="hero">
@@ -520,7 +496,7 @@
   <div class="hero-text">
     <h1>Harry G. Muttram</h1>
     <p class="tagline">
-      I am a Ph.D. candidate in Political Science at UC Riverside specializing in policing, police reform, and public policy. My research applies observational causal inference, experimental designs, computational methods, and qualitative interviews to understand how police behave and when reform works. I am also a researcher with the <a href="https://dornsife.usc.edu/everydayrespect/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Everyday Respect</a> project at USC.
+      I am a fourth-year Ph.D. candidate in Political Science at UC Riverside specializing in policing, police reform, and public policy. My research applies observational causal inference, experimental designs, computational methods, and qualitative interviews to understand how police behave and when reform works. I am also a researcher with the <a href="https://dornsife.usc.edu/everydayrespect/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Everyday Respect</a> project at USC.
     </p>
     <div class="meta">
       <span id="hero-email"></span>
@@ -550,13 +526,6 @@
       </p>
       <p class="authors">Bishin, Benjamin G., and <span class="me">Harry G. Muttram</span>. 2024. <span class="venue">The Forum</span> 21: 339–357.</p>
     </div>
-
-    <div class="item">
-      <p><a href="https://arxiv.org/pdf/2602.10339" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong></a>
-        <span class="status accepted">Accepted</span>
-      </p>
-      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Association for Computational Linguistics.</span></p>
-    </div>
   </section>
 
   <!-- UNDER REVIEW -->
@@ -574,14 +543,21 @@
       <p><strong>Police as Policymakers: How Experiences With Policy Implementation Shape Policy Representation.</strong>
         <span class="status review">Under Review</span>
       </p>
-      <p class="authors">Sierra-Arévalo, Michael, José J. Alcocer, Lauren Brown, Raquel Delerme, Benjamin A.T. Graham, <span class="me">Harry G. Muttram</span>, Jackson Trager, and Nicholas Weller. <span class="venue">Political Research Quarterly.</span></p>
+      <p class="authors">Sierra-Arévalo, Michael, José J. Alcocer, Lauren Brown, Raquel Delerme, Benjamin A.T. Graham, <span class="me">Harry G. Muttram</span>, Jackson Trager, and Nicholas Weller. <span class="venue">Perspectives on Politics.</span></p>
+    </div>
+
+    <div class="item">
+      <p><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong>
+        <span class="status review">Under Review</span>
+      </p>
+      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Association for Computational Linguistics.</span></p>
     </div>
 
     <div class="item">
       <p><strong>Community-Informed AI Models for Police Accountability.</strong>
         <span class="status review">Under Review</span>
       </p>
-      <p class="authors">Everyday Respect Team (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Nature Humanities and Social Sciences Communications.</span></p>
+      <p class="authors">Graham, Benjamin A.T., et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Nature Humanities and Social Sciences Communications.</span></p>
     </div>
   </section>
 
@@ -590,17 +566,7 @@
     <h2>Working Papers</h2>
 
     <div class="wp-item">
-      <div class="title">Officer Staffing Configurations Limit the Benefits of Police Diversity: Evidence from the LAPD</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">Does Race Predict Civilian Escalation? Testing the Bias Mechanism Underlying Officer-Involved Shootings</div>
-      <div class="coauthors">with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">Do Efforts to Increase Officer Transparency Cause Crime? Evaluating the Efficacy of Depolicing in California</div>
-      <div class="coauthors">with Benjamin A.T. Graham, Jaylynn Lopez, Michael Sierra-Arévalo, and Nicholas Weller</div>
+      <div class="title">Unmeasured Peer Networks Confound Estimates of Diversification in Policing: Evidence from the LAPD</div>
     </div>
 
     <div class="wp-item">
@@ -611,6 +577,28 @@
     <div class="wp-item">
       <div class="title">Auditing Administrative Data: Do Police Systematically Misreport Traffic Stop Data?</div>
       <div class="coauthors">with José J. Alcocer, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">Testing an Empirical Implication of Racial Bias in Police Decision to Use Force: Evidence from Body-Worn Camera Footage</div>
+      <div class="coauthors">with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TOOLS -->
+  <section id="tools">
+    <h2>Interactive Tools</h2>
+
+    <div class="tool-card">
+      <div class="tool-label">Shiny App · R</div>
+      <div class="tool-title">Should You Trust Your Policy Evaluation?</div>
+      <p class="tool-subtitle">
+        A common policy evaluation problem: one agency changes its policy and an analyst needs to estimate the effect. This tool simulates that single-treated-unit setting, lets you introduce complications like confounding or autocorrelation, and compares how Pre-Post, Two-Way Fixed Effects, and Regression Discontinuity in Time perform across hundreds of simulated datasets. Built for teaching and building intuition about when common estimators break down.
+      </p>
+      <a href="https://07r352-harry-muttram.shinyapps.io/estimator-comparison/" target="_blank" class="tool-launch">
+        Launch Tool
+        <svg viewBox="0 0 16 16"><path d="M6 3h7v7"/><path d="M13 3L6 10"/></svg>
+      </a>
     </div>
   </section>
 
@@ -627,7 +615,7 @@
 
       <div class="teach-card">
         <div class="institution">ICPSR Summer Program — U. Michigan</div>
-        <div class="role">Teaching Assistant, Summer 2025 &amp; 2026</div>
+        <div class="role">Teaching Assistant, Summer 2025</div>
         <div class="courses">Evaluating Model Robustness (Regression III), Rational Choice Theories of Politics and Society</div>
       </div>
 
@@ -656,14 +644,6 @@
     </ul>
   </section>
 
-  <!-- REVIEWER -->
-  <section>
-    <h2>Reviewer</h2>
-    <ul class="awards-list">
-      <li><span class="award-marker">◆</span> <span class="venue">The Journal of Politics</span></li>
-    </ul>
-  </section>
-
 </main>
 
 <footer>
@@ -673,7 +653,6 @@
 
 <script>
 (function() {
-  // Email obfuscation
   var u = 'hmutt001';
   var d = 'ucr.edu';
   var addr = u + '@' + d;
@@ -692,51 +671,6 @@
     a2.textContent = addr;
     a2.style.cssText = 'color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule);';
     footerEl.appendChild(a2);
-  }
-
-  // Dark mode toggle
-  var toggle = document.getElementById('theme-toggle');
-  var html = document.documentElement;
-
-  function setTheme(dark) {
-    html.setAttribute('data-theme', dark ? 'dark' : 'light');
-    toggle.textContent = dark ? '☾' : '☀';
-  }
-
-  toggle.addEventListener('click', function() {
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    setTheme(!isDark);
-  });
-
-  // Generate formula background
-  var formulas = [
-    'δ̂ = (Ȳ₁₁ − Ȳ₁₀) − (Ȳ₀₁ − Ȳ₀₀)',
-    'β̂ = (X′X)⁻¹X′Y',
-    'β̂ = argmin Σᵢ(Yᵢ − Xᵢβ)²',
-    'τ̂ᴿᴰᴰ = E[Y|X=c⁺] − E[Y|X=c⁻]',
-    'Pr(Y=1) = logit⁻¹(Xβ)',
-    'ATE = E[Y(1)] − E[Y(0)]',
-    'ATT = E[Y(1) − Y(0) | D=1]',
-    'Yᵢ = α + τDᵢ + εᵢ',
-    'Y(0), Y(1) ⊥ D | X',
-  ];
-
-  var bg = document.getElementById('formula-bg');
-  var count = 30;
-  var cols = 4;
-  var rows = Math.ceil(count / cols);
-  var cellW = 100 / cols;
-  var cellH = 100 / rows;
-  for (var i = 0; i < count; i++) {
-    var span = document.createElement('span');
-    span.textContent = formulas[i % formulas.length];
-    var col = i % cols;
-    var row = Math.floor(i / cols);
-    span.style.left = (col * cellW + Math.random() * cellW * 0.4 + cellW * 0.1) + '%';
-    span.style.top = (row * cellH + Math.random() * cellH * 0.35 + cellH * 0.15) + '%';
-    span.style.fontSize = (1.2 + Math.random() * 1.3) + 'rem';
-    span.style.transform = 'rotate(' + (Math.random() * 16 - 8) + 'deg)';
-    bg.appendChild(span);
   }
 })();
 </script>
