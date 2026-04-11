@@ -547,7 +547,7 @@
     position: absolute;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
-    color: rgba(212, 120, 74, 0.07);
+    color: rgba(212, 120, 74, 0.15);
     white-space: nowrap;
     user-select: none;
   }
@@ -821,31 +821,14 @@
 
   // Generate formula background
   var formulas = [
-    'ŷ = Xβ + ε',
-    'β̂ = (X′X)⁻¹X′y',
-    'E[Y | do(X)]',
-    'τ = E[Y₁ − Y₀]',
-    'Var(β̂) = σ²(X′X)⁻¹',
-    'Y = α + τD + Xβ + ε',
-    'P(Y | X, Z)',
+    'δ̂ = (Ȳ₁₁ − Ȳ₁₀) − (Ȳ₀₁ − Ȳ₀₀)',
+    'β̂ = (X′X)⁻¹X′Y',
+    'β̂ = argmin Σᵢ(Yᵢ − Xᵢβ)²',
+    'lim x↓c E[Yᵢ|Xᵢ=x] − lim x↑c E[Yᵢ|Xᵢ=x]',
+    'Pr(Y=1) = logit⁻¹(Xβ)',
     'ATE = E[Y(1)] − E[Y(0)]',
     'ATT = E[Y(1) − Y(0) | D=1]',
-    'Σᵢ(yᵢ − x′ᵢβ̂)² → min',
-    'R² = 1 − SSR/SST',
-    'Y = β₀ + β₁X₁ + ··· + βₖXₖ',
-    'E[ε | X] = 0',
-    'plim β̂ = β',
-    'IV: β̂ = (Z′X)⁻¹Z′y',
-    'DiD: δ = (Ȳ₁₁−Ȳ₁₀)−(Ȳ₀₁−Ȳ₀₀)',
-    'LATE = E[Y₁−Y₀ | compliers]',
-    'F = (SSRᵣ−SSRᵤ)/q ÷ SSRᵤ/(n−k)',
-    'logit(p) = log(p/(1−p)) = Xβ',
-    'RDD: τ = lim E[Y|X=c⁺] − lim E[Y|X=c⁻]',
-    'Pr(Yᵢ=1) = Φ(Xᵢβ)',
-    'SUTVA: Yᵢ(d) ⊥ Dⱼ',
-    'Wald: τ = E[Y|Z=1]−E[Y|Z=0] / E[D|Z=1]−E[D|Z=0]',
-    'σ̂² = e′e / (n−k)',
-    '∂E[Y|X]/∂X = β',
+    'Yᵢ = α + τDᵢ + εᵢ',
     'Y(0), Y(1) ⊥ D | X',
   ];
 
