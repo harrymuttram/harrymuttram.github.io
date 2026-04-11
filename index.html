@@ -218,6 +218,11 @@
     color: #4a6630;
   }
 
+  .status.accepted {
+    background: #d9e8d4;
+    color: #3a6630;
+  }
+
   .status.rr {
     background: #fcefd8;
     color: #8b6914;
@@ -379,24 +384,7 @@
     color: var(--muted);
     line-height: 1.6;
     max-width: 620px;
-    margin-bottom: 1.25rem;
-  }
-
-  .tool-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
     margin-bottom: 1.5rem;
-  }
-
-  .tool-pill {
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.3em 0.75em;
-    border-radius: 20px;
-    background: var(--sand);
-    color: var(--muted);
-    letter-spacing: 0.02em;
   }
 
   .tool-launch {
@@ -465,6 +453,7 @@
   section:nth-child(5) { animation-delay: 0.3s; }
   section:nth-child(6) { animation-delay: 0.35s; }
   section:nth-child(7) { animation-delay: 0.4s; }
+  section:nth-child(8) { animation-delay: 0.45s; }
 
   /* print styles */
   @media print {
@@ -526,6 +515,13 @@
       </p>
       <p class="authors">Bishin, Benjamin G., and <span class="me">Harry G. Muttram</span>. 2024. <span class="venue">The Forum</span> 21: 339–357.</p>
     </div>
+
+    <div class="item">
+      <p><a href="https://arxiv.org/pdf/2602.10339" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong></a>
+        <span class="status accepted">Accepted</span>
+      </p>
+      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Association for Computational Linguistics.</span></p>
+    </div>
   </section>
 
   <!-- UNDER REVIEW -->
@@ -533,31 +529,17 @@
     <h2>Under Review</h2>
 
     <div class="item">
-      <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6225738" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>Political Control and Policing: When Do Police Comply with Police Reform?</strong></a>
-        <span class="status rr">R&amp;R at AJPS</span>
-      </p>
-      <p class="authors"><span class="me">Muttram, Harry G.</span> (lead author), José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller.</p>
-    </div>
-
-    <div class="item">
       <p><strong>Police as Policymakers: How Experiences With Policy Implementation Shape Policy Representation.</strong>
         <span class="status review">Under Review</span>
       </p>
-      <p class="authors">Sierra-Arévalo, Michael, José J. Alcocer, Lauren Brown, Raquel Delerme, Benjamin A.T. Graham, <span class="me">Harry G. Muttram</span>, Jackson Trager, and Nicholas Weller. <span class="venue">Perspectives on Politics.</span></p>
-    </div>
-
-    <div class="item">
-      <p><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong>
-        <span class="status review">Under Review</span>
-      </p>
-      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Association for Computational Linguistics.</span></p>
+      <p class="authors">Sierra-Arévalo, Michael, José J. Alcocer, Lauren Brown, Raquel Delerme, Benjamin A.T. Graham, <span class="me">Harry G. Muttram</span>, Jackson Trager, and Nicholas Weller. <span class="venue">Political Research Quarterly.</span></p>
     </div>
 
     <div class="item">
       <p><strong>Community-Informed AI Models for Police Accountability.</strong>
         <span class="status review">Under Review</span>
       </p>
-      <p class="authors">Graham, Benjamin A.T., et al. (incl. <span class="me">Harry G. Muttram</span>). <span class="venue">Nature Humanities and Social Sciences Communications.</span></p>
+      <p class="authors">Everyday Respect Team. <span class="venue">Nature Humanities and Social Sciences Communications.</span></p>
     </div>
   </section>
 
@@ -566,7 +548,22 @@
     <h2>Working Papers</h2>
 
     <div class="wp-item">
-      <div class="title">Unmeasured Peer Networks Confound Estimates of Diversification in Policing: Evidence from the LAPD</div>
+      <div class="title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6225738" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;">Political Control and Policing: When Do Police Comply with Police Reform?</a></div>
+      <div class="coauthors"><span class="me">Lead author</span>. With José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">Officer Staffing Configurations Limit the Benefits of Police Diversity: Evidence from the LAPD</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">Does Race Predict Civilian Escalation? Testing the Bias Mechanism Underlying Officer-Involved Shootings</div>
+      <div class="coauthors">with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+    </div>
+
+    <div class="wp-item">
+      <div class="title">Do Efforts to Increase Officer Transparency Cause Crime? Evaluating the Efficacy of Depolicing in California</div>
+      <div class="coauthors">with Benjamin A.T. Graham, Jaylynn Lopez, Michael Sierra-Arévalo, and Nicholas Weller</div>
     </div>
 
     <div class="wp-item">
@@ -578,22 +575,17 @@
       <div class="title">Auditing Administrative Data: Do Police Systematically Misreport Traffic Stop Data?</div>
       <div class="coauthors">with José J. Alcocer, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
     </div>
-
-    <div class="wp-item">
-      <div class="title">Testing an Empirical Implication of Racial Bias in Police Decision to Use Force: Evidence from Body-Worn Camera Footage</div>
-      <div class="coauthors">with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
-    </div>
   </section>
 
   <!-- INTERACTIVE TOOLS -->
   <section id="tools">
-    <h2>Interactive Teaching Tools</h2>
+    <h2>Interactive Tools</h2>
 
     <div class="tool-card">
       <div class="tool-label">Shiny App · R</div>
       <div class="tool-title">Should You Trust Your Policy Evaluation?</div>
       <p class="tool-subtitle">
-        One unit (agency, firm, city) changes a policy, and an analyst needs to estimate the effect. This tool simulates this single-treated-unit setting, compares how Pre-Post, Two-Way Fixed Effects, and Regression Discontinuity in Time perform across hundreds of simulated datasets, and lets you introduce complications like confounding or autocorrelation. Designed for teaching and building intuition about when common estimators break down.
+        An interactive simulation tool for comparing causal inference estimators. Set the true policy effect, introduce complications like confounding or autocorrelation, and watch how Pre-Post, Two-Way Fixed Effects, and Regression Discontinuity in Time perform across hundreds of simulated datasets. Built for teaching and building intuition about when common evaluation strategies break down.
       </p>
       <a href="https://07r352-harry-muttram.shinyapps.io/estimator-comparison/" target="_blank" class="tool-launch">
         Launch Tool
@@ -615,7 +607,7 @@
 
       <div class="teach-card">
         <div class="institution">ICPSR Summer Program — U. Michigan</div>
-        <div class="role">Teaching Assistant, Summer 2025</div>
+        <div class="role">Teaching Assistant, Summer 2025 &amp; 2026</div>
         <div class="courses">Evaluating Model Robustness (Regression III), Rational Choice Theories of Politics and Society</div>
       </div>
 
@@ -641,6 +633,14 @@
       <li><span class="award-marker">◆</span> EITM Institute Scholarship, 2024</li>
       <li><span class="award-marker">◆</span> UC Riverside Chancellor's Distinguished Fellowship</li>
       <li><span class="award-marker">◆</span> UC Riverside Methods Certificate, Department of Political Science</li>
+    </ul>
+  </section>
+
+  <!-- REVIEWER -->
+  <section>
+    <h2>Reviewer</h2>
+    <ul class="awards-list">
+      <li><span class="award-marker">◆</span> <span class="venue">The Journal of Politics</span></li>
     </ul>
   </section>
 
