@@ -40,7 +40,8 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--rule);
-    padding: 0.75rem 2rem;
+    padding: 0 2rem;
+    height: 52px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,6 +71,52 @@
   }
 
   nav .links a:hover { color: var(--accent); }
+
+  /* --- TABS --- */
+  .tab-bar {
+    position: sticky;
+    top: 52px;
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 1.75rem;
+    padding: 0.55rem 1rem;
+    backdrop-filter: blur(10px);
+    background: rgba(249, 246, 241, 0.92);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .tab-btn {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    padding: 0.4rem 0.15rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .tab-btn:hover { color: var(--accent); }
+
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-panel { display: none; }
+
+  .tab-panel.active {
+    display: block;
+    animation: fadeUp 0.45s ease both;
+  }
+
+  .tab-panel > section:first-child { padding-top: 2.5rem; }
 
   /* --- HERO --- */
   .hero-banner {
@@ -472,6 +519,11 @@
     border-bottom-color: var(--rule);
   }
 
+  [data-theme="dark"] .tab-bar {
+    background: rgba(26, 23, 20, 0.92);
+    border-bottom-color: var(--rule);
+  }
+
   [data-theme="dark"] .hero-banner {
     background: linear-gradient(165deg, #1f1c17 0%, var(--paper) 50%, #252119 100%);
     border-bottom-color: var(--rule);
@@ -590,6 +642,8 @@
     section { animation: none; }
     .formula-bg { display: none !important; }
     .theme-toggle { display: none; }
+    .tab-bar { display: none; }
+    .tab-panel { display: block !important; }
   }
 </style>
 </head>
@@ -597,13 +651,7 @@
 
 <nav>
   <a href="#" class="name">Harry G. Muttram</a>
-  <div class="links">
-    <a href="#research">Research</a>
-    <a href="#tools">Tools</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#awards">Awards</a>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
-  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
 </nav>
 
 <div class="formula-bg" id="formula-bg"></div>
@@ -627,7 +675,16 @@
 </div>
 </div>
 
+<div class="tab-bar" role="tablist">
+  <button class="tab-btn active" data-tab="research" role="tab">Research</button>
+  <button class="tab-btn" data-tab="tools" role="tab">Tools</button>
+  <button class="tab-btn" data-tab="teaching" role="tab">Teaching</button>
+  <button class="tab-btn" data-tab="awards" role="tab">Awards</button>
+</div>
+
 <main>
+
+  <div class="tab-panel active" id="panel-research" role="tabpanel">
 
   <!-- PUBLICATIONS -->
   <section id="research">
@@ -718,6 +775,10 @@
     </div>
   </section>
 
+  </div><!-- /panel-research -->
+
+  <div class="tab-panel" id="panel-tools" role="tabpanel">
+
   <!-- INTERACTIVE TOOLS -->
   <section id="tools">
     <h2>Interactive Tools</h2>
@@ -734,6 +795,10 @@
       </a>
     </div>
   </section>
+
+  </div><!-- /panel-tools -->
+
+  <div class="tab-panel" id="panel-teaching" role="tabpanel">
 
   <!-- TEACHING -->
   <section id="teaching">
@@ -778,6 +843,10 @@
     </div>
   </section>
 
+  </div><!-- /panel-teaching -->
+
+  <div class="tab-panel" id="panel-awards" role="tabpanel">
+
   <!-- AWARDS -->
   <section id="awards">
     <h2>Awards &amp; Grants</h2>
@@ -787,17 +856,10 @@
       <li><span class="award-marker">◆</span> UC Graduate Division Outstanding Teaching Assistant Award, 2025–2026</li>
       <li><span class="award-marker">◆</span> EITM (Empirical Implications of Theoretical Models) ICPSR Scholarship, 2024</li>
       <li><span class="award-marker">◆</span> UC Riverside Chancellor's Distinguished Fellowship, 2023–2024</li>
-      <li><span class="award-marker">◆</span> UC Riverside Methods Certificate, Department of Political Science</li>
     </ul>
   </section>
 
-  <!-- REVIEWER -->
-  <section>
-    <h2>Reviewer</h2>
-    <ul class="awards-list">
-      <li><span class="award-marker">◆</span> <span class="venue">The Journal of Politics</span></li>
-    </ul>
-  </section>
+  </div><!-- /panel-awards -->
 
 </main>
 
@@ -841,6 +903,28 @@
   toggle.addEventListener('click', function() {
     var isDark = html.getAttribute('data-theme') === 'dark';
     setTheme(!isDark);
+  });
+
+  // Tabs
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  function activateTab(name) {
+    tabBtns.forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('data-tab') === name);
+    });
+    panels.forEach(function(p) {
+      p.classList.toggle('active', p.id === 'panel-' + name);
+    });
+  }
+  tabBtns.forEach(function(b) {
+    b.addEventListener('click', function() {
+      activateTab(b.getAttribute('data-tab'));
+      var bar = document.querySelector('.tab-bar');
+      var target = bar.offsetTop - 52;
+      if (window.scrollY > target) {
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    });
   });
 
   // Generate formula background
