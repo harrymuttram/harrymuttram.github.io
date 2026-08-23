@@ -18,7 +18,9 @@
     --muted: #7a6f60;
     --accent: #9b4a1c;
     --accent-light: #c4703e;
-    --rule: #ddd5c8;
+    --olive: #6b6a4a;
+    --olive-soft: #cfcdb8;
+    --rule: #cfcdb8;
     --sand: #ede8df;
     --section-gap: 3.5rem;
   }
@@ -153,7 +155,7 @@
     border-radius: 2px;
     object-fit: cover;
     object-position: center top;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--olive);
     box-shadow: 12px 12px 0 rgba(155, 74, 28, 0.13);
   }
 
@@ -330,7 +332,7 @@
   .wp-item {
     margin-bottom: 1rem;
     padding-left: 1rem;
-    border-left: 3px solid var(--rule);
+    border-left: 3px solid var(--olive-soft);
     transition: border-color 0.2s;
   }
 
@@ -348,6 +350,51 @@
     font-size: 0.76rem;
     color: var(--muted);
     margin-top: 0.25rem;
+  }
+
+  /* --- CONFERENCE PRESENTATIONS --- */
+  .conf-item {
+    margin-bottom: 1.1rem;
+  }
+
+  .conf-item .title {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .conf-item .venues {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 0.2rem;
+  }
+
+  /* --- SKILLS --- */
+  .skills-list {
+    list-style: none;
+  }
+
+  .skills-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .skills-list li:last-child { border-bottom: none; }
+
+  .skills-list .skill-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.15rem;
   }
 
   /* --- TOOL CARD --- */
@@ -466,7 +513,9 @@
     --muted: #9e9485;
     --accent: #d4784a;
     --accent-light: #e8955f;
-    --rule: #3d362c;
+    --olive: #8f8f6a;
+    --olive-soft: #454636;
+    --rule: #3f4034;
     --sand: #242019;
   }
 
@@ -490,7 +539,7 @@
   }
 
   [data-theme="dark"] .hero-photo {
-    border-color: var(--rule);
+    border-color: var(--olive);
     box-shadow: 12px 12px 0 rgba(212, 120, 74, 0.16);
   }
 
@@ -682,13 +731,13 @@
     </div>
 
     <div class="wp-item">
-      <div class="title">Family in Blue: The Effects of Familial Exposure to Employment by the Punitive Hand of the Government</div>
-      <div class="coauthors"><span class="me"></span> with Marcel Roman, Benjamin Newman, and Tyler Reny</div>
+      <div class="title">Police Subject Black and Hispanic Drivers to More Intensive Traffic Stops That Are Perceived as Less Legitimate</div>
+      <div class="coauthors"><span class="me"></span> with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
     </div>
 
     <div class="wp-item">
-      <div class="title">Police Encounter Intensity Explains Perceived Legitimacy Better than Procedural Justice</div>
-      <div class="coauthors"><span class="me"></span> with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
+      <div class="title">Family in Blue: The Effects of Familial Exposure to Employment by the Punitive Hand of the Government</div>
+      <div class="coauthors"><span class="me"></span> with Marcel Roman, Benjamin Newman, and Tyler Reny</div>
     </div>
 
     <div class="wp-item">
@@ -698,7 +747,32 @@
 
     <div class="wp-item">
       <div class="title">A Principal Components-Based Sensitivity Analysis for Linear and Nonlinear Regression Models</div>
-      <div class="coauthors"><span class="me"></span> with Dave Armstrong</div>
+      <div class="coauthors"><span class="me"></span> with David Armstrong</div>
+    </div>
+  </section>
+
+  <!-- CONFERENCE PRESENTATIONS -->
+  <section>
+    <h2>Conference Presentations</h2>
+
+    <div class="conf-item">
+      <div class="title">Officer Staffing Configurations Limit the Benefits of Police Diversity: Evidence from the LAPD</div>
+      <div class="venues">Interdisciplinary Policing Research Workshop, San Marcos, TX, Feb. 2026.</div>
+    </div>
+
+    <div class="conf-item">
+      <div class="title">Street-Level Bureaucrats and Political Control: Do Los Angeles Police Change their Behavior in Response to Policy Changes?</div>
+      <div class="venues">APSA, Vancouver, Sep. 2025 · ICPSR Blalock Lecture Series, Ann Arbor, MI, Jul. 2025 · MPSA, Chicago, IL, Apr. 2025.</div>
+    </div>
+
+    <div class="conf-item">
+      <div class="title">American Immigration Attitudes and NIMBYism: Do Immigration Preferences Vary by Spatial Scale?</div>
+      <div class="venues">Southern California Political Behavior Conference, Riverside, CA, Jan. 2025.</div>
+    </div>
+
+    <div class="conf-item">
+      <div class="title">Groups vs. Identities: Does Use of Psychological versus Ascriptive Measures of Race and Ethnicity Lead to Mistaken Conclusions in the Study of American Politics?</div>
+      <div class="venues">MPSA, Chicago, IL, Apr. 2024.</div>
     </div>
   </section>
 
@@ -729,6 +803,25 @@
         This is an R package to conduct sensitivity analysis for both linear and nonlinear models. It's a work in progress. It will be public soon(ish).
       </p>
     </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Methods &amp; Software</h2>
+    <ul class="skills-list">
+      <li>
+        <span class="skill-label">Research Methodologies</span>
+        Statistical modeling, observational causal inference, experimental methods, causal-oriented mixed methods, machine learning.
+      </li>
+      <li>
+        <span class="skill-label">Programming &amp; Statistical Software</span>
+        R (advanced).
+      </li>
+      <li>
+        <span class="skill-label">Typesetting</span>
+        LaTeX, Markdown.
+      </li>
+    </ul>
   </section>
 
   </div><!-- /panel-tools -->
@@ -786,7 +879,7 @@
   <section id="awards">
     <h2>Awards &amp; Grants</h2>
     <ul class="awards-list">
-      <li><span class="award-marker">◆</span> Everyday Respect Predoctoral Fellowship, USC SPEC Lab, 2026–2028</li>
+      <li><span class="award-marker">◆</span> Everyday Respect Predoctoral Fellowship, USC SPEC Lab, 2026–2027</li>
       <li><span class="award-marker">◆</span> Haynes Lindley Doctoral Dissertation Fellowship, 2026–2027</li>
       <li><span class="award-marker">◆</span> Presley Center for Crime &amp; Justice Studies Graduate Student Fellowship, 2026</li>
       <li><span class="award-marker">◆</span> UC Graduate Division Outstanding Teaching Assistant Award, 2025–2026</li>
