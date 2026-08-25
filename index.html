@@ -6,984 +6,300 @@
 <title>Harry G. Muttram — Political Science</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-    --sans: 'Newsreader', Georgia, 'Times New Roman', serif;
-    --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    --ink: #2c2418;
-    --paper: #f9f6f1;
-    --warm-white: #fdfcf9;
-    --muted: #7a6f60;
-    --accent: #9b4a1c;
-    --accent-light: #c4703e;
-    --olive: #6b6a4a;
-    --olive-soft: #cfcdb8;
-    --rule: #cfcdb8;
-    --sand: #ede8df;
-    --section-gap: 3.5rem;
-  }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{--body:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',monospace;
+  --paper:#fffffe;--ink:#111;--muted:#5f5f5f;--rule:#dcdcdc;--accent:#111;--surface:#fafafa;}
+  [data-theme=dark]{--paper:#121212;--ink:#e9e9e9;--muted:#9a9a9a;--rule:#2e2e2e;--accent:#e9e9e9;--surface:#1a1a1a;}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:17px;scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.62}
+  .masthead{max-width:700px;margin:0 auto;padding:4.5rem 2rem 0;text-align:center}
+  .portrait{width:112px;height:140px;object-fit:cover;object-position:center top;border:1px solid var(--rule);display:block;margin:0 auto 1.15rem;filter:grayscale(100%);transition:filter .4s ease}
+  .portrait:hover{filter:grayscale(0%)}
+  .masthead h1{font-family:var(--body);font-size:2.1rem;font-weight:500;letter-spacing:-0.01em}
+  .masthead .sub{font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-top:0.6rem;letter-spacing:0.02em}
+  .masthead .abstract{margin-top:1.6rem;text-align:left;font-size:0.98rem;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:1.1rem 0}
+  .masthead .abstract .lbl{font-family:var(--mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted);display:block;margin-bottom:0.4rem}
+  .masthead .abstract a{color:var(--ink)}
+  .topnav{max-width:700px;margin:0 auto;padding:1rem 2rem 0;display:flex;flex-wrap:wrap;gap:0 1.1rem;justify-content:center}
+  .topnav a{font-family:var(--mono);font-size:0.68rem;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+  .topnav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .topnav a.active{color:var(--ink);border-bottom-color:var(--ink)}
+  body.filtered main section{display:none;padding-top:2.25rem}
+  body.filtered main section.shown{display:block}
+  .content{max-width:700px;margin:0 auto;padding:0 2rem 6rem}
+  section{padding-top:3rem;scroll-margin-top:1rem}
+  h2{font-family:var(--mono);font-size:0.66rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--muted);border-bottom:1px solid var(--ink);padding-bottom:0.4rem;margin-bottom:1.1rem}
+  .row{display:grid;grid-template-columns:56px 1fr;gap:1.1rem;padding:0.85rem 0;border-bottom:1px solid var(--rule)}
+  .row:last-child{border-bottom:none}
+  .stamp{font-family:var(--mono);font-size:0.68rem;color:var(--muted);padding-top:0.2rem}
+  .title{font-size:1rem;font-weight:500;line-height:1.4}
+  .title a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .title a:hover{border-bottom-color:var(--ink)}
+  .meta{font-family:var(--mono);font-size:0.68rem;color:var(--muted);margin-top:0.3rem;line-height:1.55}
+  .meta .me{color:var(--ink)}
+  .tldr{font-size:0.9rem;margin-top:0.45rem;max-width:60ch;color:var(--ink)}
+  .tldr::before{content:'TL;DR';font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;color:var(--muted);margin-right:0.55rem}
+  .card{padding:0.85rem 0;border-bottom:1px solid var(--rule)}
+  .where{font-family:var(--mono);font-size:0.64rem;color:var(--muted);letter-spacing:0.04em}
+  .what{font-size:1rem;font-weight:500;margin-top:0.15rem}
+  .detail{font-size:0.9rem;color:var(--muted);margin-top:0.2rem}
+  .launch{display:inline-block;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.5em 1em;text-decoration:none;margin-top:0.7rem}
+  .skills{margin-top:1.4rem}
+  .skill-row{display:grid;grid-template-columns:150px 1fr;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--rule);font-size:0.9rem}
+  .skill-row .k{font-family:var(--mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);padding-top:0.2rem}
+  .cv-embed{width:100%;height:820px;border:1px solid var(--rule);margin-top:1rem;display:block;background:var(--surface)}
+  .cv-fallback{padding:2rem;color:var(--muted);font-size:0.9rem}
+  #theme-toggle{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--muted);padding:0.3rem 0.6rem;cursor:pointer;margin-top:1rem}
+  #theme-toggle:hover{color:var(--ink);border-color:var(--ink)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media(max-width:640px){.portrait{width:96px;height:120px}.row{grid-template-columns:44px 1fr;gap:0.8rem}.skill-row{grid-template-columns:1fr;gap:0.2rem}.cv-embed{height:480px}.masthead{padding-top:2.5rem}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  @media print{.topnav,#theme-toggle,.cv-embed{display:none}body.filtered main section{display:block!important}}
 
-  html { font-size: 17px; scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.65;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* --- NAV --- */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--rule);
-    padding: 0 2rem;
-    height: 52px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(10px);
-    background: rgba(249, 246, 241, 0.92);
-  }
-
-  nav .name {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 1.15rem;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  nav .links { display: flex; gap: 1.75rem; }
-
-  nav .links a {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: color 0.2s;
-  }
-
-  nav .links a:hover { color: var(--accent); }
-
-  /* --- TABS --- */
-  .tab-bar {
-    position: sticky;
-    top: 52px;
-    z-index: 90;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0 1.75rem;
-    padding: 0.55rem 1rem;
-    backdrop-filter: blur(10px);
-    background: rgba(249, 246, 241, 0.92);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .tab-btn {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    padding: 0.4rem 0.15rem;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .tab-btn:hover { color: var(--accent); }
-
-  .tab-btn.active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-
-  .tab-panel { display: none; }
-
-  .tab-panel.active { display: block; }
-
-  .tab-panel > section:first-child { padding-top: 2.5rem; }
-
-  /* --- HERO --- */
-  .hero-banner {
-    background: linear-gradient(165deg, var(--sand) 0%, var(--paper) 50%, #e8dfd2 100%);
-    border-bottom: 1px solid var(--rule);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-banner::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 20% 80%, rgba(155, 74, 28, 0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .hero {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 4rem 2rem 3.5rem;
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    position: relative;
-  }
-
-  .hero-photo-wrap {
-    flex-shrink: 0;
-  }
-
-  .hero-photo {
-    width: 300px;
-    height: 375px;
-    border-radius: 2px;
-    object-fit: cover;
-    object-position: center top;
-    border: 1px solid var(--olive);
-    box-shadow: 12px 12px 0 rgba(155, 74, 28, 0.13);
-  }
-
-  .hero-text {
-    flex: 1;
-  }
-
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 0;
-    margin-bottom: 1rem;
-    color: var(--ink);
-  }
-
-  .hero .tagline {
-    font-family: var(--sans);
-    font-size: 1.02rem;
-    color: var(--ink);
-    font-weight: 400;
-    max-width: 520px;
-    line-height: 1.65;
-  }
-
-  .hero .tagline + .tagline { margin-top: 0.8rem; }
-
-  .hero .meta {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-weight: 400;
-  }
-
-  .hero .meta a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-
-  .hero .meta a:hover { border-color: var(--accent); }
-
-  /* --- MAIN CONTENT --- */
-  main {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 2rem 5rem;
-  }
-
-  section {
-    padding-top: var(--section-gap);
-  }
-
-  section + section {
-    margin-top: 1rem;
-  }
-
-  h2 {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 2px solid var(--accent);
-    display: inline-block;
-    color: var(--ink);
-  }
-
-  h3 {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-  }
-
-  .item {
-    margin-bottom: 1.25rem;
-  }
-
-  .item .venue {
-    font-style: italic;
-    color: var(--muted);
-  }
-
-  .item p {
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-
-  .item .authors {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    line-height: 1.6;
-    color: var(--muted);
-    margin-top: 0.3rem;
-  }
-
-  .item .authors .me {
-    color: var(--ink);
-    font-weight: 600;
-  }
-
-  /* --- TEACHING GRID --- */
-  .teaching-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .teach-card {
-    background: var(--warm-white);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 1.1rem 1.25rem;
-    transition: border-color 0.2s;
-  }
-
-  .teach-card:hover { border-color: var(--accent-light); }
-
-  .teach-card .institution {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--muted);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-
-  .teach-card .role {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 1.05rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .teach-card .courses {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* --- AWARDS --- */
-  .awards-list {
-    list-style: none;
-  }
-
-  .awards-list li {
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-  }
-
-  .awards-list li:last-child { border-bottom: none; }
-
-  .award-marker {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  /* --- WORKING PAPERS --- */
-  .wp-item {
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    border-left: 3px solid var(--olive-soft);
-    transition: border-color 0.2s;
-  }
-
-  .wp-item:hover { border-left-color: var(--accent); }
-
-  .wp-item .title {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.45;
-  }
-
-  .wp-item .coauthors {
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-  }
-
-  /* --- CONFERENCE PRESENTATIONS --- */
-  .conf-item {
-    margin-bottom: 1.1rem;
-  }
-
-  .conf-item .title {
-    font-family: var(--serif);
-    font-size: 1.02rem;
-    font-weight: 500;
-    line-height: 1.45;
-  }
-
-  .conf-item .venues {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-top: 0.2rem;
-  }
-
-  /* --- SKILLS --- */
-  .skills-list {
-    list-style: none;
-  }
-
-  .skills-list li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 0.95rem;
-    line-height: 1.55;
-  }
-
-  .skills-list li:last-child { border-bottom: none; }
-
-  .skills-list .skill-label {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    font-weight: 600;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 0.15rem;
-  }
-
-  /* --- TOOL CARD --- */
-  .tool-card {
-    background: var(--warm-white);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    padding: 2rem 2.25rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  .tool-card + .tool-card { margin-top: 1.25rem; }
-
-  .tool-card:hover { border-color: var(--accent-light); }
-
-  .tool-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
-    border-radius: 8px 0 0 8px;
-  }
-
-  .tool-card .tool-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-
-  .tool-card .tool-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 0.6rem;
-    color: var(--ink);
-  }
-
-  .tool-card .tool-subtitle {
-    font-size: 0.92rem;
-    color: var(--muted);
-    line-height: 1.6;
-    max-width: 620px;
-    margin-bottom: 1.5rem;
-  }
-
-  .tool-launch {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--sans);
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--warm-white);
-    background: var(--accent);
-    padding: 0.6em 1.4em;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .tool-launch:hover { background: var(--accent-light); }
-
-  .tool-launch svg {
-    width: 14px;
-    height: 14px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* --- FOOTER --- */
-  footer {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 2rem 2rem 3rem;
-    border-top: 1px solid var(--rule);
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-  }
-
-  /* --- RESPONSIVE --- */
-  @media (max-width: 640px) {
-    html { font-size: 16px; }
-    .hero { padding: 3rem 1.25rem 2rem; flex-direction: column-reverse; align-items: center; text-align: center; gap: 1.5rem; }
-    .hero h1 { font-size: 2rem; }
-    .hero-photo { width: 260px; height: 325px; box-shadow: 8px 8px 0 rgba(155, 74, 28, 0.13); }
-    .hero .meta { align-items: center; }
-    .hero .tagline { max-width: 100%; }
-    .teaching-grid { grid-template-columns: 1fr; }
-    nav .links { gap: 1rem; }
-    nav .links a { font-size: 0.72rem; }
-    main { padding: 0 1.25rem 3rem; }
-    footer { flex-direction: column; gap: 0.5rem; }
-  }
-
-  /* --- DARK MODE --- */
-  [data-theme="dark"] {
-    --ink: #e8e0d4;
-    --paper: #1a1714;
-    --warm-white: #242019;
-    --muted: #9e9485;
-    --accent: #d4784a;
-    --accent-light: #e8955f;
-    --olive: #8f8f6a;
-    --olive-soft: #454636;
-    --rule: #3f4034;
-    --sand: #242019;
-  }
-
-  [data-theme="dark"] nav {
-    background: rgba(26, 23, 20, 0.92);
-    border-bottom-color: var(--rule);
-  }
-
-  [data-theme="dark"] .tab-bar {
-    background: rgba(26, 23, 20, 0.92);
-    border-bottom-color: var(--rule);
-  }
-
-  [data-theme="dark"] .hero-banner {
-    background: linear-gradient(165deg, #1f1c17 0%, var(--paper) 50%, #252119 100%);
-    border-bottom-color: var(--rule);
-  }
-
-  [data-theme="dark"] .hero-banner::before {
-    background: radial-gradient(ellipse at 20% 80%, rgba(212, 120, 74, 0.06) 0%, transparent 60%);
-  }
-
-  [data-theme="dark"] .hero-photo {
-    border-color: var(--olive);
-    box-shadow: 12px 12px 0 rgba(212, 120, 74, 0.16);
-  }
-
-  [data-theme="dark"] .teach-card {
-    background: #242019;
-    border-color: var(--rule);
-  }
-
-  [data-theme="dark"] .tool-card {
-    background: #242019;
-    border-color: var(--rule);
-  }
-
-  [data-theme="dark"] .item p a {
-    color: var(--ink) !important;
-    border-bottom-color: var(--rule) !important;
-  }
-
-  [data-theme="dark"] .wp-item .title a {
-    color: var(--ink) !important;
-    border-bottom-color: var(--rule) !important;
-  }
-
-  /* --- FORMULA BACKGROUND --- */
-  .formula-bg {
-    display: block;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-    opacity: 1;
-    transition: opacity 0.6s ease;
-  }
-
-  .formula-bg span {
-    position: absolute;
-    font-family: 'Newsreader', Georgia, serif;
-    font-style: italic;
-    color: rgba(155, 74, 28, 0.13);
-    white-space: nowrap;
-    user-select: none;
-    transition: color 0.6s ease;
-  }
-
-  [data-theme="dark"] .formula-bg span {
-    color: rgba(212, 120, 74, 0.15);
-  }
-
-  /* --- DARK MODE TOGGLE --- */
-  .theme-toggle {
-    background: none;
-    border: 1px solid var(--rule);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: var(--muted);
-    transition: color 0.2s, border-color 0.2s;
-    flex-shrink: 0;
-    margin-left: 1rem;
-  }
-
-  .theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* Ensure content is above formula bg */
-  .hero-banner, main, footer {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* print styles */
-  @media print {
-    nav { display: none; }
-    .hero-banner { background: none; border: none; }
-    .hero { padding-top: 1rem; }
-    .hero-photo { box-shadow: none; border: 1px solid #999; }
-    .formula-bg { display: none !important; }
-    .theme-toggle { display: none; }
-    .tab-bar { display: none; }
-    .tab-panel { display: block !important; }
-  }
 </style>
 </head>
 <body>
-
-<nav>
-  <a href="#" class="name">Harry G. Muttram</a>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
+<header class="masthead">
+  <img src="photo.jpg" alt="Harry G. Muttram" class="portrait">
+  <h1>Harry G. Muttram</h1>
+  <div class="sub">Ph.D. Candidate, Political Science · University of California, Riverside<br><span id="email-slot"></span></div>
+  <div class="abstract">
+    <span class="lbl">Abstract</span>
+    I study the the efficacy of police reform, and how police behavior shapes what civilians believe about government. My work draws on body-worn camera footage-as-data, administrative records, and surveys. I am the <a href="https://dornsife.usc.edu/everydayrespect/" target="_blank">Everyday Respect</a> Predoctoral Fellow at USC's Security and Political Economy Lab. I enjoy building and teaching quantitative methods for applied social science.
+  </div>
+  <button id="theme-toggle">Dark</button>
+</header>
+<nav class="topnav">
+    <a href="#published">Published</a>
+    <a href="#review">Under review</a>
+    <a href="#progress">In progress</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#software">Software</a>
+    <a href="#awards">Awards</a>
+    <a href="#cv">CV</a>
 </nav>
+<main class="content">
 
-<div class="formula-bg" id="formula-bg"></div>
-
-<div class="hero-banner">
-<div class="hero">
-  <div class="hero-text">
-    <h1>Harry G. Muttram</h1>
-    <p class="tagline">
-      I am a fifth-year Ph.D. candidate in Political Science at UC Riverside. The main strand of my research focuses on the political economy of policing. A second strand focuses on how police (and other) institutions shape the attitudes and behavior of civilians.
-    </p>
-    <p class="tagline">
-      I am also the <a href="https://dornsife.usc.edu/everydayrespect/" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">Everyday Respect</a> Predoctoral Fellow at USC's Security and Political Economy (SPEC) Lab.
-    </p>
-    <p class="tagline">
-      And I enjoy teaching and developing quantitative methods for applied social science. And Canadian rock band Rush.
-    </p>
-    <div class="meta">
-      <span id="hero-email"></span>
-      <span><a href="cv.pdf" target="_blank">Curriculum Vitae (PDF)</a></span>
-      <span>University of California, Riverside</span>
-      <span>University of Southern California</span>
-    </div>
-  </div>
-  <div class="hero-photo-wrap">
-    <img src="photo.jpg" alt="Harry G. Muttram" class="hero-photo">
-  </div>
-</div>
-</div>
-
-<div class="tab-bar" role="tablist">
-  <button class="tab-btn active" data-tab="research" role="tab">Research</button>
-  <button class="tab-btn" data-tab="tools" role="tab">Tools and R Packages</button>
-  <button class="tab-btn" data-tab="teaching" role="tab">Teaching</button>
-  <button class="tab-btn" data-tab="awards" role="tab">Awards and Grants</button>
-</div>
-
-<main>
-
-  <div class="tab-panel active" id="panel-research" role="tabpanel">
-
-  <!-- PUBLICATIONS -->
-  <section id="research">
-    <h2>Publications</h2>
-
-    <div class="item">
-      <p><a href="https://journals.sagepub.com/doi/10.1177/10659129261466246" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>Police as Policymakers: How Experiences With Policy Implementation Shape Policy Representation.</strong></a></p>
-      <p class="authors">Sierra-Arévalo, Michael, et al. (incl. <span class="me">Harry G. Muttram</span>). 2026. <span class="venue">Political Research Quarterly.</span></p>
-    </div>
-
-    <div class="item">
-      <p><a href="https://aclanthology.org/2026.acl-long.1564.pdf" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>The Subjectivity of Respect in Police Traffic Stops: Modeling Community Perspectives in Body-Worn Camera Footage.</strong></a></p>
-      <p class="authors">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>). 2026. <span class="venue">Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</span>, pp. 33939–33961.</p>
-    </div>
-
-    <div class="item">
-      <p><a href="https://doi.org/10.1017/S1049096525101467" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>American Immigration Attitudes and NIMBYism: Do Immigration Preferences Vary by Spatial Scale?</strong></a></p>
-      <p class="authors">Lee, Jieun, and <span class="me">Harry G. Muttram</span> (co-lead author). 2025. <span class="venue">PS: Political Science &amp; Politics</span> 1–9.</p>
-    </div>
-
-    <div class="item">
-      <p><a href="https://www.degruyterbrill.com/document/doi/10.1515/for-2023-2026/html" target="_blank" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s;"><strong>When Are Identities Politically Consequential? Identifying Conditions of Descriptive, Substantive, and Allied Group Identity.</strong></a></p>
-      <p class="authors">Bishin, Benjamin G., and <span class="me">Harry G. Muttram</span>. 2024. <span class="venue">The Forum</span> 21: 339–357.</p>
-    </div>
+  <section id="published">
+    <h2>Published</h2>
+    <article class="row">
+      <div class="stamp">2026</div>
+      <div class="body">
+        <h3 class="title"><a href="https://journals.sagepub.com/doi/10.1177/10659129261466246" target="_blank">Police as policymakers: how experiences with policy implementation shape policy representation</a></h3>
+        <p class="meta">Sierra-Arévalo, Michael, et al. (incl. <span class="me">Harry G. Muttram</span>) · Political Research Quarterly</p>
+        <p class="tldr">We surveyed Los Angeles residents on policing to study policy as implemented by street-level bureaucrats: experiences and preferences are similar and statistically indistinguishable across racial groups, but general assessments of police are not. Thirty interviews suggest that shared preferences rest on different reasoning, and that the same police actions are read differently by race.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp">2026</div>
+      <div class="body">
+        <h3 class="title"><a href="https://aclanthology.org/2026.acl-long.1564.pdf" target="_blank">The subjectivity of respect in police traffic stops: modeling community perspectives in body-worn camera footage</a></h3>
+        <p class="meta">Golazizian, Preni, et al. (incl. <span class="me">Harry G. Muttram</span>) · Proceedings of ACL 64, pp. 33939–33961</p>
+        <p class="tldr">We annotated LAPD traffic-stop body-camera transcripts with respect ratings and written rationales from police-affiliated, justice-system-impacted, and non-affiliated Los Angeles residents. We then train a model that conditions on annotator background, which produces rationales closer to each group's own reasoning, most of all for justice-system-impacted annotators.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp">2025</div>
+      <div class="body">
+        <h3 class="title"><a href="https://doi.org/10.1017/S1049096525101467" target="_blank">American immigration attitudes and NIMBYism: do immigration preferences vary by spatial scale?</a></h3>
+        <p class="meta">Lee, Jieun, and <span class="me">Harry G. Muttram</span> (co-lead author) · PS: Political Science &amp; Politics, 1–9</p>
+        <p class="tldr">We conducted a conjoint experiment on a representative sample of U.S. adults to assess how much NIMBYism shapes immigration preferences. We find a small NIMBY effect, dwarfed by the attributes of the immigrant.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp">2024</div>
+      <div class="body">
+        <h3 class="title"><a href="https://www.degruyterbrill.com/document/doi/10.1515/for-2023-2026/html" target="_blank">When are identities politically consequential? Identifying conditions of descriptive, substantive, and allied group identity</a></h3>
+        <p class="meta">Bishin, Benjamin G., and <span class="me">Harry G. Muttram</span> · The Forum 21: 339–357</p>
+        <p class="tldr">We draw on decades of psychological research to specify the conditions under which identity should shape political behavior. We show that ignoring those conditions can produce mistaken conclusions about how identity groups vote in presidential elections.</p>
+      </div>
+    </article>
   </section>
 
-  <!-- UNDER REVIEW -->
-  <section>
-    <h2>Under Review</h2>
-
-    <div class="item">
-      <p><strong>Does Procedural Justice Training Improve Officer Communication? Reevaluating the Oakland Police Department's Body-Worn Camera Footage.</strong></p>
-      <p class="authors"><span class="me">Muttram, Harry G.</span> Revise &amp; resubmit, <span class="venue">PNAS Nexus.</span></p>
-    </div>
-
-    <div class="item">
-      <p><strong>Political Control and Policing: When Do Police Comply with Police Reform?</strong></p>
-      <p class="authors"><span class="me">Muttram, Harry G.</span> (lead author), José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller. Revise &amp; resubmit, <span class="venue">Journal of Policy Analysis and Management.</span></p>
-    </div>
-
-    <div class="item">
-      <p><strong>Community-Informed AI Models for Police Accountability.</strong></p>
-      <p class="authors">Everyday Respect Team (incl. <span class="me">Harry G. Muttram</span>). Under review, <span class="venue">Humanities and Social Sciences Communications.</span></p>
-    </div>
+  <section id="review">
+    <h2>Under review</h2>
+    <article class="row">
+      <div class="stamp pending">R&amp;R</div>
+      <div class="body">
+        <h3 class="title">Does procedural justice training improve officer communication? Reevaluating the Oakland Police Department's body-worn camera footage</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span> · PNAS Nexus</p>
+        <p class="tldr">I reevaluate a procedural justice training conducted by the Oakland Police Department and evaluated using body-worn camera footage. Because officers were not randomly assigned to training cohorts, those trained earlier were already more procedurally just and made more stops; the reported treatment effect reflects these baseline differences in communication rather than the training itself.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">R&amp;R</div>
+      <div class="body">
+        <h3 class="title">Political control and policing: when do police comply with police reform?</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span> (lead author), José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller · Journal of Policy Analysis and Management</p>
+        <p class="tldr">We build and test a model of when officers comply with police reform, using a 2022 LAPD effort to reduce pretextual stops. Body-worn camera recordings show officers adopted the policy's verbal requirements and pretextual stops fell sharply, but interviews and stop data suggest that because sanctions never materialized, officers reverted to pre-policy behavior.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">Sub.</div>
+      <div class="body">
+        <h3 class="title">Community-informed AI models for police accountability</h3>
+        <p class="meta">Everyday Respect Team (incl. <span class="me">Harry G. Muttram</span>) · Humanities and Social Sciences Communications</p>
+        <p class="tldr">We argue that AI models used to evaluate government accountability should incorporate diverse perspectives rather than a single ground truth. We document our approach to community-informed model training, in which annotators are recruited from the populations whose judgments the model is meant to represent.</p>
+      </div>
+    </article>
   </section>
 
-  <!-- WORKING PAPERS -->
-  <section>
-    <h2>Selected Working Papers</h2>
-
-    <div class="wp-item">
-      <div class="title">Working with Majority Peers Stifles the Behavioral Benefits of Police Diversification: Evidence from Los Angeles</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">Police Subject Black and Hispanic Drivers to More Intensive Traffic Stops That Are Perceived as Less Legitimate</div>
-      <div class="coauthors"><span class="me"></span> with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">Family in Blue: The Effects of Familial Exposure to Employment by the Punitive Hand of the Government</div>
-      <div class="coauthors"><span class="me"></span> with Marcel Roman, Benjamin Newman, and Tyler Reny</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">Does Race Predict Civilian Escalation? Testing a Mechanism Underlying Bias in Officer-Involved Shootings</div>
-      <div class="coauthors"><span class="me"></span> with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</div>
-    </div>
-
-    <div class="wp-item">
-      <div class="title">A Principal Components-Based Sensitivity Analysis for Linear and Nonlinear Regression Models</div>
-      <div class="coauthors"><span class="me"></span> with David Armstrong</div>
-    </div>
+  <section id="progress">
+    <h2>In progress</h2>
+    <article class="row">
+      <div class="stamp pending">Diss.</div>
+      <div class="body">
+        <h3 class="title">Working with majority peers stifles the behavioral benefits of police diversification: evidence from Los Angeles</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span></p>
+        <p class="tldr">I test academic objections to the efficacy of police diversification for reducing aggressive policing. Comparing the same officer across analogous working conditions, I show that Black and female officers are significantly more likely to search and less likely to arrest when working with majority-group peers.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">WP</div>
+      <div class="body">
+        <h3 class="title">Police subject Black and Hispanic drivers to more intensive traffic stops that are perceived as less legitimate</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span>, with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</p>
+        <p class="tldr">We use body-worn camera annotations to build a latent measure of stop intensity, capturing the cumulative intrusiveness of officer actions during a stop. We show that this measure varies by driver race and predicts legitimacy as assessed by independent annotators.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">WP</div>
+      <div class="body">
+        <h3 class="title">Family in blue: the effects of familial exposure to employment by the punitive hand of the government</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span>, with Marcel Roman, Benjamin Newman, and Tyler Reny</p>
+        <p class="tldr">We build on work assessing the liberalizing effects of carceral contact by testing whether police family members exert the opposite, conservatizing effect. Familial contact generates pro-police orientations and "law and order" views across racial lines, but race bounds these effects: among non-Whites, it neither conservatizes race-related views nor erodes support for police reform. </p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">WP</div>
+      <div class="body">
+        <h3 class="title">Does race predict civilian escalation? Testing a mechanism underlying bias in officer-involved shootings</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span>, with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</p>
+        <p class="tldr">We test an implication of a formal model of police bias, that White civilians should escalate more, using a novel measure of civilian escalation drawn from body-worn camera footage. We find no evidence that they do.</p>
+      </div>
+    </article>
+    <article class="row">
+      <div class="stamp pending">WP</div>
+      <div class="body">
+        <h3 class="title">Simulating Confounders for Sensitivity Analysis in Generalized Linear and Additive Models</h3>
+        <p class="meta"><span class="me">Muttram, Harry G.</span>, with David Armstrong</p>
+        <p class="tldr">Existing tools for gauging how much an omitted variable would change a result work only for linear models. We propose a simulation procedure that extends this reasoning to nonlinear models by inserting a confounder of known strength; an accompanying R package is in development.</p>
+      </div>
+    </article>
   </section>
 
-  <!-- CONFERENCE PRESENTATIONS -->
-  <section>
-    <h2>Conference Presentations</h2>
-
-    <div class="conf-item">
-      <div class="title">Officer Staffing Configurations Limit the Benefits of Police Diversity: Evidence from the LAPD</div>
-      <div class="venues">Interdisciplinary Policing Research Workshop, San Marcos, TX, Feb. 2026.</div>
-    </div>
-
-    <div class="conf-item">
-      <div class="title">Street-Level Bureaucrats and Political Control: Do Los Angeles Police Change their Behavior in Response to Policy Changes?</div>
-      <div class="venues">APSA, Vancouver, Sep. 2025 · ICPSR Blalock Lecture Series, Ann Arbor, MI, Jul. 2025 · MPSA, Chicago, IL, Apr. 2025.</div>
-    </div>
-
-    <div class="conf-item">
-      <div class="title">American Immigration Attitudes and NIMBYism: Do Immigration Preferences Vary by Spatial Scale?</div>
-      <div class="venues">Southern California Political Behavior Conference, Riverside, CA, Jan. 2025.</div>
-    </div>
-
-    <div class="conf-item">
-      <div class="title">Groups vs. Identities: Does Use of Psychological versus Ascriptive Measures of Race and Ethnicity Lead to Mistaken Conclusions in the Study of American Politics?</div>
-      <div class="venues">MPSA, Chicago, IL, Apr. 2024.</div>
-    </div>
-  </section>
-
-  </div><!-- /panel-research -->
-
-  <div class="tab-panel" id="panel-tools" role="tabpanel">
-
-  <!-- INTERACTIVE TOOLS -->
-  <section id="tools">
-    <h2>Tools and R Packages</h2>
-
-    <div class="tool-card">
-      <div class="tool-label">Shiny App · R</div>
-      <div class="tool-title">Should We Trust Your Policy Evaluation?</div>
-      <p class="tool-subtitle">
-        This is a simulation tool I built for building intuition about the efficacy of causal inference estimators. The idea is that you can set the true policy effect in a hypothetical impact evaluation, add complications like confounding or autocorrelation, and see how pre-post, two-way fixed effects, and regression discontinuity in time methods perform across a bunch of simulated datasets. Feel free to try it out or share with your students.
-      </p>
-      <a href="https://07r352-harry-muttram.shinyapps.io/estimator-comparison/" target="_blank" class="tool-launch">
-        Launch Tool
-        <svg viewBox="0 0 16 16"><path d="M6 3h7v7"/><path d="M13 3L6 10"/></svg>
-      </a>
-    </div>
-
-    <div class="tool-card">
-      <div class="tool-label">R Package · In Development</div>
-      <div class="tool-title">pcaSens</div>
-      <p class="tool-subtitle">
-        This is an R package to conduct sensitivity analysis for both linear and nonlinear models. It's a work in progress. It will be public soon(ish).
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Methods &amp; Software</h2>
-    <ul class="skills-list">
-      <li>
-        <span class="skill-label">Research Methodologies</span>
-        Statistical modeling, observational causal inference, experimental methods, causal-oriented mixed methods, machine learning.
-      </li>
-      <li>
-        <span class="skill-label">Programming &amp; Statistical Software</span>
-        R (advanced).
-      </li>
-      <li>
-        <span class="skill-label">Typesetting</span>
-        LaTeX, Markdown.
-      </li>
-    </ul>
-  </section>
-
-  </div><!-- /panel-tools -->
-
-  <div class="tab-panel" id="panel-teaching" role="tabpanel">
-
-  <!-- TEACHING -->
   <section id="teaching">
     <h2>Teaching</h2>
-
-    <div class="teaching-grid">
-      <div class="teach-card">
-        <div class="institution">UC Riverside</div>
-        <div class="role">Associate Instructor, Summer 2026</div>
-        <div class="courses">Criminal Justice</div>
-      </div>
-
-      <div class="teach-card">
-        <div class="institution">UC Riverside</div>
-        <div class="role">Teaching Assistant</div>
-        <div class="courses">Criminal Justice, Judicial Politics, American Politics, American Institutions through Film, Congressional Elections, Graduate Quantitative Methods Sequence</div>
-      </div>
-
-      <div class="teach-card">
-        <div class="institution">ICPSR Summer Program — U. Michigan</div>
-        <div class="role">Teaching Assistant, Summer 2025 &amp; 2026</div>
-        <div class="courses">Evaluating Model Robustness (formerly Advanced Regression Analysis), Rational Choice Theories of Politics and Society, Introductory Mathematics for Social Science</div>
-      </div>
-
-      <div class="teach-card">
-        <div class="institution">Cal Poly Pomona</div>
-        <div class="role">Teaching Assistant, Summer 2022</div>
-        <div class="courses">Criminal Justice</div>
-      </div>
-
-      <div class="teach-card">
-        <div class="institution">UC Graduate Division</div>
-        <div class="role">Quantitative Methods Consultant, 2024–2026</div>
-        <div class="courses">One-on-one consultations on research design, statistical and causal inference, and programming in R and Qualtrics. Workshops on linear regression, generalized linear models, experimental research, observational causal inference, R, and LaTeX.</div>
-      </div>
-
-      <div class="teach-card">
-        <div class="institution">Prison Education Project</div>
-        <div class="role">Educator, 2021–2022</div>
-        <div class="courses">Co-taught Introduction to Philosophy and Introduction to Sociology to incarcerated youth at Riverside and Indio Juvenile Halls.</div>
-      </div>
+    <div class="card">
+      <div class="where">UC Riverside · Summer 2026</div>
+      <div class="what">Associate instructor</div>
+      <div class="detail">Criminal Justice</div>
+    </div>
+    <div class="card">
+      <div class="where">UC Riverside · 2023–present</div>
+      <div class="what">Teaching assistant</div>
+      <div class="detail">Criminal Justice, Judicial Politics, American Politics, American Institutions through Film, Congressional Elections, and the graduate quantitative methods sequence.</div>
+    </div>
+    <div class="card">
+      <div class="where">ICPSR Summer Program, U. Michigan · 2025 &amp; 2026</div>
+      <div class="what">Teaching assistant</div>
+      <div class="detail">Evaluating Model Robustness (formerly Advanced Regression Analysis), Rational Choice Theories of Politics and Society, Introductory Mathematics for Social Science.</div>
+    </div>
+    <div class="card">
+      <div class="where">UC Graduate Division · 2024–2026</div>
+      <div class="what">Quantitative methods consultant</div>
+      <div class="detail">One-on-one consultations on research design, statistical and causal inference, and programming in R and Qualtrics. Workshops on linear regression, generalized linear models, experimental research, observational causal inference, R, and LaTeX.</div>
+    </div>
+    <div class="card">
+      <div class="where">Cal Poly Pomona · Summer 2022</div>
+      <div class="what">Teaching assistant</div>
+      <div class="detail">Criminal Justice</div>
+    </div>
+    <div class="card">
+      <div class="where">Prison Education Project · 2021–2022</div>
+      <div class="what">Educator</div>
+      <div class="detail">Co-taught Introduction to Philosophy and Introduction to Sociology to incarcerated youth at Riverside and Indio Juvenile Halls.</div>
     </div>
   </section>
 
-  </div><!-- /panel-teaching -->
-
-  <div class="tab-panel" id="panel-awards" role="tabpanel">
-
-  <!-- AWARDS -->
-  <section id="awards">
-    <h2>Awards &amp; Grants</h2>
-    <ul class="awards-list">
-      <li><span class="award-marker">◆</span> Everyday Respect Predoctoral Fellowship, USC SPEC Lab, 2026–2027</li>
-      <li><span class="award-marker">◆</span> Haynes Lindley Doctoral Dissertation Fellowship, 2026–2027</li>
-      <li><span class="award-marker">◆</span> Presley Center for Crime &amp; Justice Studies Graduate Student Fellowship, 2026</li>
-      <li><span class="award-marker">◆</span> UC Graduate Division Outstanding Teaching Assistant Award, 2025–2026</li>
-      <li><span class="award-marker">◆</span> EITM (Empirical Implications of Theoretical Models) ICPSR Scholarship, 2024</li>
-      <li><span class="award-marker">◆</span> UC Riverside Chancellor's Distinguished Fellowship, 2023–2024</li>
-    </ul>
+  <section id="software">
+    <h2>Software</h2>
+    <div class="card">
+      <div class="where">Shiny app · R</div>
+      <div class="what">Should we trust your policy evaluation?</div>
+      <div class="detail">This is a simulation tool I built for building intuition about the efficacy of causal inference estimators. The idea is that you can set the true policy effect in a hypothetical impact evaluation, add complications like confounding or autocorrelation, and see how pre-post, two-way fixed effects, and regression discontinuity in time methods perform across a bunch of simulated datasets. Feel free to try it out or share with your students.</div>
+      <a href="https://07r352-harry-muttram.shinyapps.io/estimator-comparison/" target="_blank" class="launch">Launch tool</a>
+    </div>
+    <div class="card">
+      <div class="where">R package · in development</div>
+      <div class="what">pcaSens</div>
+      <div class="detail">This is an R package to conduct sensitivity analysis for both linear and nonlinear models. It's a work in progress. It will be public soon(ish).</div>
+    </div>
+    <div class="skills">
+      <div class="skill-row"><div class="k">Methods</div><div class="v">Statistical modeling, observational causal inference, experimental methods, causal-oriented mixed methods, machine learning.</div></div>
+      <div class="skill-row"><div class="k">Programming</div><div class="v">R (advanced); working knowledge of Python and Stata.</div></div>
+      <div class="skill-row"><div class="k">Typesetting</div><div class="v">LaTeX, Markdown.</div></div>
+    </div>
   </section>
 
-  </div><!-- /panel-awards -->
+  <section id="awards">
+    <h2>Awards</h2>
+    <article class="row"><div class="stamp">2026</div><div class="body"><h3 class="title">Everyday Respect Predoctoral Fellowship, USC SPEC Lab</h3></div></article>
+    <article class="row"><div class="stamp">2026</div><div class="body"><h3 class="title">Haynes Lindley Doctoral Dissertation Fellowship</h3></div></article>
+    <article class="row"><div class="stamp">2026</div><div class="body"><h3 class="title">Presley Center for Crime &amp; Justice Studies Graduate Student Fellowship</h3></div></article>
+    <article class="row"><div class="stamp">2025</div><div class="body"><h3 class="title">UC Graduate Division Outstanding Teaching Assistant Award</h3></div></article>
+    <article class="row"><div class="stamp">2024</div><div class="body"><h3 class="title">EITM (Empirical Implications of Theoretical Models) ICPSR Scholarship</h3></div></article>
+    <article class="row"><div class="stamp">2023</div><div class="body"><h3 class="title">UC Riverside Chancellor's Distinguished Fellowship</h3></div></article>
+  </section>
+
+  <section id="cv">
+    <h2>Curriculum vitae</h2>
+    <a href="cv.pdf" target="_blank" class="launch">Download PDF</a>
+    <object data="cv.pdf" type="application/pdf" class="cv-embed">
+      <div class="cv-fallback">Error.</div>
+    </object>
+  </section>
 
 </main>
-
-<footer>
-  <span>Harry G. Muttram · UCR, USC · Political Science</span>
-  <span id="footer-email"></span>
-</footer>
-
 <script>
-(function() {
-  // Email obfuscation
-  var u = 'hmutt001';
-  var d = 'ucr.edu';
-  var addr = u + '@' + d;
-  var heroEl = document.getElementById('hero-email');
-  var footerEl = document.getElementById('footer-email');
-  if (heroEl) {
-    var a1 = document.createElement('a');
-    a1.href = 'mailto:' + addr;
-    a1.textContent = addr;
-    a1.style.cssText = 'color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;';
-    heroEl.appendChild(a1);
-  }
-  if (footerEl) {
-    var a2 = document.createElement('a');
-    a2.href = 'mailto:' + addr;
-    a2.textContent = addr;
-    a2.style.cssText = 'color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule);';
-    footerEl.appendChild(a2);
+(function(){
+  var addr='hmutt001'+'@'+'ucr.edu';
+  var el=document.getElementById('email-slot');
+  if(el){var a=document.createElement('a');a.href='mailto:'+addr;a.textContent=addr;el.appendChild(a);}
+  var t=document.getElementById('theme-toggle');
+  if(t){var r=document.documentElement;t.addEventListener('click',function(){
+    var d=r.getAttribute('data-theme')==='dark';
+    r.setAttribute('data-theme',d?'light':'dark');
+    t.textContent=d?'Dark':'Light';});}
+
+  var sections=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+  var ids=sections.map(function(s){return s.id;});
+  document.body.classList.add('filtered');
+
+  function show(id){
+    sections.forEach(function(sec){sec.classList.toggle('shown', sec.id===id);});
+    links.forEach(function(a){a.classList.toggle('active', a.getAttribute('href')==='#'+id);});
   }
 
+  function resolve(h){ return ids.indexOf(h)>-1 ? h : 'published'; }
 
-  // Dark mode toggle
-  var toggle = document.getElementById('theme-toggle');
-  var html = document.documentElement;
-
-  function setTheme(dark) {
-    html.setAttribute('data-theme', dark ? 'dark' : 'light');
-    toggle.textContent = dark ? '☾' : '☀';
-  }
-
-  toggle.addEventListener('click', function() {
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    setTheme(!isDark);
-  });
-
-  // Tabs
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  var panels = document.querySelectorAll('.tab-panel');
-  function activateTab(name) {
-    tabBtns.forEach(function(b) {
-      b.classList.toggle('active', b.getAttribute('data-tab') === name);
-    });
-    panels.forEach(function(p) {
-      p.classList.toggle('active', p.id === 'panel-' + name);
-    });
-  }
-  tabBtns.forEach(function(b) {
-    b.addEventListener('click', function() {
-      activateTab(b.getAttribute('data-tab'));
-      var bar = document.querySelector('.tab-bar');
-      var target = bar.offsetTop - 52;
-      if (window.scrollY > target) {
-        window.scrollTo({ top: target, behavior: 'smooth' });
-      }
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var id=a.getAttribute('href').slice(1);
+      show(id);
+      history.replaceState(null,'','#'+id);
+      window.scrollTo(0,0);
     });
   });
 
-  // Generate formula background
-  var formulas = [
-    'δ̂ = (Ȳ₁₁ − Ȳ₁₀) − (Ȳ₀₁ − Ȳ₀₀)',
-    'β̂ = (X′X)⁻¹X′Y',
-    'β̂ = argmin Σᵢ(Yᵢ − Xᵢβ)²',
-    'lim x↓c E[Yᵢ|Xᵢ=x] − lim x↑c E[Yᵢ|Xᵢ=x]',
-    'Pr(Y=1) = logit⁻¹(Xβ)',
-    'ATE = E[Y(1)] − E[Y(0)]',
-    'ATT = E[Y(1) − Y(0) | D=1]',
-    'Yᵢ = α + τDᵢ + εᵢ',
-    'Y(0), Y(1) ⊥ D | X',
-    'ATT(g,t) = E[Yₜ(g) − Yₜ(0) | G=g]',
-  ];
-
-  var bg = document.getElementById('formula-bg');
-  var count = 35;
-  for (var i = 0; i < count; i++) {
-    var span = document.createElement('span');
-    span.textContent = formulas[Math.floor(Math.random() * formulas.length)];
-    span.style.left = (Math.random() * 95) + '%';
-    span.style.top = (Math.random() * 95) + '%';
-    span.style.fontSize = (0.8 + Math.random() * 1.4) + 'rem';
-    span.style.transform = 'rotate(' + (Math.random() * 30 - 15) + 'deg)';
-    bg.appendChild(span);
-  }
+  show(resolve(window.location.hash.slice(1)));
+  window.addEventListener('hashchange',function(){ show(resolve(window.location.hash.slice(1))); });
 })();
 </script>
-
 </body>
 </html>
