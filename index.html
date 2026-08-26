@@ -10,8 +10,8 @@
 <style>
 
   :root{--body:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',monospace;
-  --paper:#fffffe;--ink:#111;--muted:#5f5f5f;--rule:#dcdcdc;--accent:#111;--surface:#fafafa;}
-  [data-theme=dark]{--paper:#121212;--ink:#e9e9e9;--muted:#9a9a9a;--rule:#2e2e2e;--accent:#e9e9e9;--surface:#1a1a1a;}
+  --paper:#fffffe;--ink:#111;--muted:#5f5f5f;--rule:#dcdcdc;--surface:#fafafa;}
+  [data-theme=dark]{--paper:#121212;--ink:#e9e9e9;--muted:#9a9a9a;--rule:#2e2e2e;--surface:#1a1a1a;}
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   html{font-size:17px;scroll-behavior:smooth}
   body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.62}
@@ -46,16 +46,13 @@
   .what{font-size:1rem;font-weight:500;margin-top:0.15rem}
   .detail{font-size:0.9rem;color:var(--muted);margin-top:0.2rem}
   .launch{display:inline-block;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.5em 1em;text-decoration:none;margin-top:0.7rem}
-  .skills{margin-top:1.4rem}
-  .skill-row{display:grid;grid-template-columns:150px 1fr;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--rule);font-size:0.9rem}
-  .skill-row .k{font-family:var(--mono);font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);padding-top:0.2rem}
   .cv-embed{width:100%;height:820px;border:1px solid var(--rule);margin-top:1rem;display:block;background:var(--surface)}
   .cv-fallback{padding:2rem;color:var(--muted);font-size:0.9rem}
   #theme-toggle{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--muted);padding:0.3rem 0.6rem;cursor:pointer;margin-top:1rem}
   #theme-toggle:hover{color:var(--ink);border-color:var(--ink)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  @media(max-width:640px){.portrait{width:176px;height:220px}.row{grid-template-columns:44px 1fr;gap:0.8rem}.skill-row{grid-template-columns:1fr;gap:0.2rem}.cv-embed{height:480px}.masthead{padding-top:2.5rem}}
-  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  @media(max-width:640px){.portrait{width:176px;height:220px}.row{grid-template-columns:44px 1fr;gap:0.8rem}.cv-embed{height:480px}.masthead{padding-top:2.5rem}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   @media print{.topnav,#theme-toggle,.cv-embed{display:none}body.filtered main section{display:block!important}}
 
 </style>
@@ -85,10 +82,10 @@
   <section id="published">
     <h2>Published</h2>
     <article class="row">
-      <div class="stamp pending">Accept.</div>
+      <div class="stamp">Forth.</div>
       <div class="body">
         <h3 class="title">Does procedural justice training improve officer communication? Reevaluating the Oakland Police Department's body-worn camera footage</h3>
-        <p class="meta"><span class="me">Muttram, Harry G.</span> · PNAS Nexus</p>
+        <p class="meta"><span class="me">Muttram, Harry G.</span> · PNAS Nexus, forthcoming</p>
         <p class="tldr">I reevaluate a procedural justice training conducted by the Oakland Police Department. Those trained earlier were already more procedurally just and made more stops; the reported treatment effect reflects these baseline differences in communication rather than the training itself.</p>
       </div>
     </article>
@@ -129,7 +126,7 @@
   <section id="review">
     <h2>Under review</h2>
     <article class="row">
-      <div class="stamp pending">R&amp;R</div>
+      <div class="stamp">R&amp;R</div>
       <div class="body">
         <h3 class="title">Political control and policing: when do police comply with police reform?</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span> (lead author), José J. Alcocer, Lauren Brown, Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller · Journal of Policy Analysis and Management</p>
@@ -137,7 +134,7 @@
       </div>
     </article>
     <article class="row">
-      <div class="stamp pending">Sub.</div>
+      <div class="stamp">Sub.</div>
       <div class="body">
         <h3 class="title">Community-informed AI models for police accountability</h3>
         <p class="meta">Everyday Respect Team (incl. <span class="me">Harry G. Muttram</span>) · Humanities and Social Sciences Communications</p>
@@ -149,7 +146,7 @@
   <section id="progress">
     <h2>In progress</h2>
     <article class="row">
-      <div class="stamp pending">Diss.</div>
+      <div class="stamp">Diss.</div>
       <div class="body">
         <h3 class="title">Working with majority peers stifles the behavioral benefits of police diversification: evidence from Los Angeles</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span></p>
@@ -157,7 +154,7 @@
       </div>
     </article>
     <article class="row">
-      <div class="stamp pending">WP</div>
+      <div class="stamp">WP</div>
       <div class="body">
         <h3 class="title">Police subject Black and Hispanic drivers to more intensive traffic stops that are perceived as less legitimate</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span>, with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</p>
@@ -165,7 +162,7 @@
       </div>
     </article>
     <article class="row">
-      <div class="stamp pending">WP</div>
+      <div class="stamp">WP</div>
       <div class="body">
         <h3 class="title">Family in blue: the effects of familial exposure to employment by the punitive hand of the government</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span>, with Marcel Roman, Benjamin Newman, and Tyler Reny</p>
@@ -173,7 +170,7 @@
       </div>
     </article>
     <article class="row">
-      <div class="stamp pending">WP</div>
+      <div class="stamp">WP</div>
       <div class="body">
         <h3 class="title">Does race predict civilian escalation? Testing a mechanism underlying bias in officer-involved shootings</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span>, with Benjamin A.T. Graham, Michael Sierra-Arévalo, and Nicholas Weller</p>
@@ -181,7 +178,7 @@
       </div>
     </article>
     <article class="row">
-      <div class="stamp pending">WP</div>
+      <div class="stamp">WP</div>
       <div class="body">
         <h3 class="title">Simulating Confounders for Sensitivity Analysis in Generalized Linear and Additive Models</h3>
         <p class="meta"><span class="me">Muttram, Harry G.</span>, with David Armstrong</p>
